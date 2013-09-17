@@ -17,11 +17,11 @@ namespace MVC4.MyOrganizer.Controllers
         {
             NewTodo oTodo = new NewTodo();
             oTodo.TodoItems = TodoItem.ThingsTodo;
-            oTodo.Categories = new List<Category>{
-                new Category{ Name="Home", Description = "isang malupet"},
-                new Category{ Name="Work", Description = "isang malupet"}
-            };
-
+            //oTodo.Categories = new List<Category>{
+            //    new Category{ Name="Home", Description = "isang malupet"},
+            //    new Category{ Name="Work", Description = "isang malupet"}
+            //};
+            oTodo.TodoDTO = new TodoItemDTO();
             ViewData.Model = oTodo; //TodoItem.ThingsTodo;
             return View();
         }

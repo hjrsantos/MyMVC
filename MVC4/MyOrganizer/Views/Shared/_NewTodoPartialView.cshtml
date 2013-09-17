@@ -1,13 +1,36 @@
-﻿
+﻿@model MVC4.MyOrganizer.Models.TodoItemDTO
 
 <div id="myModal" class="modal hide fade in">
-  <div id="ModalLocationHeader" class="modal-header">
+  <div id="ModalLocationHeader" class="modal-header"> New Todo Item
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>    
   </div>
   <div class="modal-body">   
-    <p>
-        
-    </p>
+    @using (Html.BeginForm("Create","Todo", FormMethod.Post)) {
+        @Html.ValidationSummary(true)
+
+
+
+            <div class="editor-label">
+            
+                Select Category    
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("SelectedCategoryId", Model.Categories)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+
+    }
   </div>
   <div class="modal-footer">
   </div>
