@@ -1,0 +1,76 @@
+﻿@model MVC4.MyOrganizer.Models.NewTodo
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    showCreateNew = function () {
+
+
+
+        $('#myModal').modal({
+            keyboard: false,
+            show: true,
+            backdrop: 'static'
+        });
+
+    }
+
+</script>
+<hr />
+<div class="container">
+    <div class="row-fluid">
+        <div class=" text-center">    
+            <p>
+                <a href="javascript:void(0);" onclick="showCreateNew();">New Create</a>
+            </p>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="row-fluid">
+
+
+
+    <div class="span4">
+         @Html.Partial("_SideNavPartial", Model.Categories)
+    </div>
+    <div class="span8">
+
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TodoItems.First().Completed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TodoItems.First().Title)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model.TodoItems) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Completed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+        </table>
+    </div>
+</div>
+
+
+@Html.Partial("_NewTodoPartialView")

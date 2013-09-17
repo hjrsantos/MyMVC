@@ -1,0 +1,42 @@
+﻿@model MVC4.MyOrganizer.Models.AppUser
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Login</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">            
+            <input name="cRememberLogin" id="cRememberLogin" type="checkbox" />
+            Remember Login
+        </div>
+        <p>
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Login" />
+        </p>
+    </fieldset>
+}
+

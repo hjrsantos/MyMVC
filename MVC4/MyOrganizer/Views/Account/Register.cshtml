@@ -1,0 +1,38 @@
+﻿@model MVC4.MyOrganizer.Models.RegisterDTO
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+
+                <div class="row">
+                    <div class="span12">
+                        @Html.LabelFor(m => m.UserName)
+                    </div>
+                    <div class="span12">
+                        @Html.TextBoxFor(m => m.UserName)
+                    </div>
+                    <div class="span12">
+                        @Html.LabelFor(m => m.Password)
+                    </div>
+                    <div class="span12">
+                        @Html.PasswordFor(m => m.Password)
+                    </div>
+                    <div class="span12">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                    </div>
+                    <div class="span12">
+                        @Html.PasswordFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+        <input type="submit" value="Register" />
+    </fieldset>
+}

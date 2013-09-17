@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link type="text/css" href=" @Url.Content("~/Styles/bootstrap.css")" rel="Stylesheet" />
+    <link type="text/css" href="@Url.Content("~/Styles/bootstrap-responsive.min.css")" rel="Stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
+
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap-modal.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+
+        <a class="btn btn-large btn-danger" href="/">
+            <i class="icon-book icon-2x pull-left"></i> Daily Organizer<br>v0.0.1
+        </a>
+        @if (Request.IsAuthenticated)
+        {
+            <text>
+                Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+                @using (Html.BeginForm("Signout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                }
+            </text>            
+        }
+@*        else
+        { 
+            <div class="row-fluid">
+                <div class="span6">
+                    @Html.ActionLink("Register", "Register", "Account")
+                </div>
+                <div class="span6">
+                    @Html.ActionLink("Login", "Login", "Account")
+                </div>
+            </div>
+        }*@
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <div class="container">
+        About
+    </div>
+</body>
+</html>
