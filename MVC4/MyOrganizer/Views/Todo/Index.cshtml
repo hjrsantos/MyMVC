@@ -7,6 +7,24 @@
 
 <script type="text/javascript">
 
+    $(document).ready(function () {
+
+        applySideNavStyle('@ViewBag.category');
+    });
+
+    applySideNavStyle = function (selectedCategory) {
+        
+        if (isNUllOrEmpty(selectedCategory))
+            return;
+
+        $(".bs-docs-sidenav li").each(function () {
+            $(this).removeClass("active");
+        });
+
+        $('#link' + selectedCategory).closest("li").addClass("active")
+
+    }
+
     showCreateNew = function () {
 
 
@@ -19,13 +37,20 @@
 
     }
 
+    confirmDelete = function (todoItemText) {
+
+        return confirm('Are you sure you want to delete:' + todoItemText + '?');
+    }
+
 </script>
 <hr />
 <div class="container">
     <div class="row-fluid">
         <div class=" text-center">    
             <p>
-                <a href="javascript:void(0);" onclick="showCreateNew();">New Create</a>
+                <a class="btn btn-large btn-warning" href="javascript:void(0);" onclick="showCreateNew();">
+                    <i class="icon-plus-sign pull-left"></i> Add Todo Item
+                </a>
             </p>
         </div>
     </div>
@@ -41,30 +66,34 @@
     </div>
     <div class="span8">
 
-        <table>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.TodoItems.First().Completed)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TodoItems.First().Title)
-                </th>
-                <th></th>
-            </tr>
+        <table class="table table-hover">
 
         @foreach (var item in Model.TodoItems)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Completed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <div>
+                        <small>TodoItem:</small> <strong>@Html.DisplayFor(modelItem => item.Title)</strong> 
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <small>Completed:</small> <strong>@Html.Encode(item.Completed)</strong>
+                        </div>
+                        <div class="span6">
+                            <div class=" pull-right">
+                                @if (!item.Completed) { 
+                                    @Html.ActionLink("Edit", "Edit", new { id= item.Id }) 
+                                    <span>|</span>
+                                }
+                                
+                                @Html.ActionLink(
+                                    "Delete",
+                                    "Delete",
+                                    new { id = item.Id },
+                                    htmlAttributes: new { onclick = "return confirm('Are you sure you want to delete:" + item.Title + "?')" })
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }

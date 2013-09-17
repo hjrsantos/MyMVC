@@ -11,7 +11,7 @@ namespace MVC4.MyOrganizer.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required]        
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
@@ -20,6 +20,6 @@ namespace MVC4.MyOrganizer.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-
+        public ICollection<TodoItem> ThingsTodo { get; set; }
     }
 }

@@ -12,8 +12,10 @@ namespace MVC4.MyOrganizer.Utils
     {
         public static bool isValidUser(string sUserName, string sPassword) {
 
-            AppUser oAppUser = DBHandler.getAppUserByUserName(sUserName);
-            return PasswordHash.ValidatePassword(sPassword, oAppUser.Password);        
+            AppUser appUser = DBHandler.getAppUserByUserName(sUserName);
+            if (appUser == null)
+                return false;
+            return PasswordHash.ValidatePassword(sPassword, appUser.Password);        
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MVC4.MyOrganizer.Models
     {
         public TodoItemDTO TodoDTO { get; set; }
 
-        //public IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<TodoItem> TodoItems { get; set; }
     }
 }

@@ -2,13 +2,16 @@
 
    <div id="actualNav" class="span3 bs-docs-sidebar" style=" margin-bottom:100px;">
         <ul class="nav nav-list bs-docs-sidenav affix">
-            <li style="background-color: orange;"><a href="javascript:void(0);"  style="color: white; text-decoration: none;">Categories</a></li>  
+            <li class="active"><a href="/Todo/Index/">All Categories</a></li>  
             @foreach (var item in Model) { 
-                <li class=" active" >
-                    <a href="/Todo/Browse?category=@Html.DisplayFor(modelItem => item.Name)" onclick="highligh(this);">
-                        <i class='icon-chevron-right' style='float:right; margin-left:10px'></i>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </a>
+                <li>
+                    @Html.ActionLink(
+                      @Html.DisplayFor(modelItem => item.Name).ToHtmlString(),
+                      "Index",
+                      "Todo",
+                       new { category = @Html.DisplayFor(modelItem => item.Name), id = @Html.DisplayFor(modelItem => item.Id) },
+                       htmlAttributes: new { id = "link" + @Html.DisplayFor(modelItem => item.Name) }
+                    )
                 </li>  
             }
         </ul>

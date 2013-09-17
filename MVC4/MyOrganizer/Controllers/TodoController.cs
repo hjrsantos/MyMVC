@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC4.MyOrganizer.Models;
+using MVC4.MyOrganizer.Utils;
 
 namespace MVC4.MyOrganizer.Controllers
 {
@@ -13,16 +14,16 @@ namespace MVC4.MyOrganizer.Controllers
         // GET: /Todo/
 
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string category, string id)
         {
             NewTodo oTodo = new NewTodo();
-            oTodo.TodoItems = TodoItem.ThingsTodo;
-            //oTodo.Categories = new List<Category>{
-            //    new Category{ Name="Home", Description = "isang malupet"},
-            //    new Category{ Name="Work", Description = "isang malupet"}
-            //};
+            oTodo.TodoItems = DBHandler.getAllTodoItemsByCategoryId(id);
+            oTodo.Categories = DBHandler.getAllCategories();
             oTodo.TodoDTO = new TodoItemDTO();
-            ViewData.Model = oTodo; //TodoItem.ThingsTodo;
+            ViewData.Model = oTodo;
+            ViewBag.Category = category;
+
+
             return View();
         }
 
@@ -33,20 +34,53 @@ namespace MVC4.MyOrganizer.Controllers
             return View("Create");
         }
 
-        //Post
         [HttpPost]
         [Authorize]
-        //public ActionResult Create(TodoItem oTodo)
         public ActionResult Create(TodoItemDTO oTodo)
         {
-            //TodoItem.ThingsTodo.Add(oTodo);
+            DBHandler.saveTodoItem(oTodo);
             return RedirectToAction("Index");
         }
 
-        public ActionResult Browse(string Category) {
+        [Authorize]
+        public ActionResult Edit(string id) {
+            
+            TodoItem todoItem = DBHandler.getTodoItemById(int.Parse(id));
+            if (todoItem == null)
+                RedirectToAction("Index");
 
+            TodoItemDTO todoItemDTO = new TodoItemDTO();
+
+            todoItemDTO.Title = todoItem.Title;
+            todoItemDTO.SelectedCategoryId = todoItem.CategoryId;
+            todoItemDTO.SelectedCompletedId = todoItem.Completed ? 1 : 0;
+
+            SelectListItem completedSelectItem = todoItemDTO.Completed.Where(p => int.Parse(p.Value) == todoItemDTO.SelectedCompletedId).FirstOrDefault();
+            if (completedSelectItem != null)
+                completedSelectItem.Selected = true;
+
+            SelectListItem selectItem = todoItemDTO.Categories.Where(p => int.Parse(p.Value) == todoItem.CategoryId).FirstOrDefault();
+            if (selectItem != null)
+                selectItem.Selected = true;
+
+            ViewData.Model = todoItemDTO;
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(TodoItemDTO oTodo, string id)
+        {
+
+            DBHandler.EditTodoItem(oTodo, int.Parse(id));
             return RedirectToAction("Index");
-            //return View("Index");
+        }
+
+        public ActionResult Delete(string id) {
+
+            DBHandler.deleteTodoItemById(int.Parse(id));
+            return RedirectToAction("Index");
+        
         }
     }
 }

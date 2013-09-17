@@ -124,9 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309160938415_TableUpdate.cs" />
-    <Compile Include="Migrations\201309160938415_TableUpdate.Designer.cs">
-      <DependentUpon>201309160938415_TableUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\201309170805494_UpdatedAppuser.cs" />
+    <Compile Include="Migrations\201309170805494_UpdatedAppuser.Designer.cs">
+      <DependentUpon>201309170805494_UpdatedAppuser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -189,12 +189,15 @@
     <Content Include="Views\Shared\_SideNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201309160938415_TableUpdate.resx">
-      <DependentUpon>201309160938415_TableUpdate.cs</DependentUpon>
+    <Content Include="Views\Shared\_NewTodoPartialView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201309170805494_UpdatedAppuser.resx">
+      <DependentUpon>201309170805494_UpdatedAppuser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_NewTodoPartialView.cshtml" />
+    <Content Include="Views\Todo\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

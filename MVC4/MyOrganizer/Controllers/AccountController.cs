@@ -56,9 +56,36 @@ namespace MVC4.MyOrganizer.Controllers
         [HttpPost]
         public ActionResult Register(RegisterDTO oDTO) {
 
-            DBHandler.registerUser(oDTO);
+            if (!validateRegistration(oDTO))
+                return View(oDTO);        
 
-            return RedirectToAction("Login");
+            if (DBHandler.registerUser(oDTO))
+                return RedirectToAction("Login");
+            else
+            {
+                // If we got this far, something failed, redisplay form
+                ModelState.AddModelError("", "The user name is already taken.");
+                return View(oDTO);   
+            }
+        }
+
+        private bool validateRegistration(RegisterDTO oDTO)
+        {
+            if (string.IsNullOrEmpty(oDTO.UserName) ||
+                string.IsNullOrEmpty(oDTO.Password) ||
+                string.IsNullOrEmpty(oDTO.ConfirmPassword)
+            ){            
+                // If we got this far, something failed, redisplay form
+                ModelState.AddModelError("", "Please fix the error");
+                return false;             
+            }
+            if (oDTO.Password != oDTO.ConfirmPassword)
+            {
+                ModelState.AddModelError("", "Please fix the error");
+                return false;
+            }
+
+            return true;        
         }
 
     }
