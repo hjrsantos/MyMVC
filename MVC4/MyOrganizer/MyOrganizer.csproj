@@ -124,9 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309170805494_UpdatedAppuser.cs" />
-    <Compile Include="Migrations\201309170805494_UpdatedAppuser.Designer.cs">
-      <DependentUpon>201309170805494_UpdatedAppuser.cs</DependentUpon>
+    <Compile Include="Migrations\201309180251035_NewMDF.cs" />
+    <Compile Include="Migrations\201309180251035_NewMDF.Designer.cs">
+      <DependentUpon>201309180251035_NewMDF.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -145,6 +145,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\MVCOrganizer.mdf" />
+    <Content Include="App_Data\MVCOrganizer_log.ldf">
+      <DependentUpon>MVCOrganizer.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -155,7 +159,9 @@
     <Content Include="Views\Todo\Create.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -163,9 +169,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -192,12 +195,12 @@
     <Content Include="Views\Shared\_NewTodoPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201309170805494_UpdatedAppuser.resx">
-      <DependentUpon>201309170805494_UpdatedAppuser.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\Todo\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Todo\Edit.cshtml" />
+    <EmbeddedResource Include="Migrations\201309180251035_NewMDF.resx">
+      <DependentUpon>201309180251035_NewMDF.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

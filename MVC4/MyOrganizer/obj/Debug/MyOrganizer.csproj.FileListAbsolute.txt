@@ -71,6 +71,6 @@ G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\bin\System.Web.WebPages.Razor.xml
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\ResolveAssemblyReference.cache
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\MVC4.MyOrganizer.dll
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\MVC4.MyOrganizer.pdb
-G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\MVC4.MyOrganizer.Migrations.UpdatedAppuser.resources
+G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\MVC4.MyOrganizer.Migrations.NewMDF.resources
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\GenerateResource.read.1.tlog
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer\obj\Debug\GenerateResource.write.1.tlog

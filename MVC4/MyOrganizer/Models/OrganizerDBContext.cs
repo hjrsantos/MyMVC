@@ -13,7 +13,7 @@ namespace MVC4.MyOrganizer.Models
         public DbSet<Category> Categories { get; set; }
 
         public OrganizerDBContext()
-            : base("name=OrganizerCS")
+            : base("name=MDFConnection")
         {}
     }
 }
