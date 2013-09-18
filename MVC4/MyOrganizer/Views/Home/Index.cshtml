@@ -14,12 +14,15 @@
     Build using C# ASP.NET MVCv4 technology stack and Entity Framework v5 code first on the Data Layer.
     </p>
     <p>
-        <a href="/Account/Register" class="btn btn-primary">
-            Register
-        </a>
-        <a href="/Account/Login" class="btn btn-primary">
-            Login
-        </a>
+        @if (!Request.IsAuthenticated)
+        {
+            <a href="/Account/Register" class="btn btn-primary">
+                Register
+            </a>
+            <a href="/Account/Login" class="btn btn-primary">
+                Login
+            </a>
+        }
     </p>
     </div>
 

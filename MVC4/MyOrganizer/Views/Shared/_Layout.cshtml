@@ -50,7 +50,7 @@
                 <text>
                     <div class="span3">
                         <div class="pull-right" style=" padding-top:25px;">
-                            Hello, <strong>@User.Identity.Name</strong>
+                            Hello, @Html.ActionLink(User.Identity.Name,"Index","Todo")
                         </div>
                     </div>
                     <div class="span3">
