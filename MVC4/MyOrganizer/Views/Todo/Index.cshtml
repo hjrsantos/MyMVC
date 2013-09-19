@@ -22,23 +22,17 @@
         });
 
         $('#link' + selectedCategory).closest("li").addClass("active")
-
     }
 
     showCreateNew = function () {
-
-
-
         $('#myModal').modal({
             keyboard: false,
             show: true,
             backdrop: 'static'
         });
-
     }
 
     confirmDelete = function (todoItemText) {
-
         return confirm('Are you sure you want to delete:' + todoItemText + '?');
     }
 

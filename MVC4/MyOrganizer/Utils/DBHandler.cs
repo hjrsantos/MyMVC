@@ -136,5 +136,39 @@ namespace MVC4.MyOrganizer.Utils
             
             }
         }
+
+
+       //additional features for knockout demo
+        public static List<TodoItem> getAllTodoItems() {
+
+            using (var db = new OrganizerDBContext()) {
+
+                return db.TodoItems.ToList();            
+            }
+        }
+
+        public static void saveNewTodoItem(TodoItem oTodoItem) { 
+            using(var db = new OrganizerDBContext()){
+
+                db.TodoItems.Add(oTodoItem);
+                db.Entry(oTodoItem).State = System.Data.EntityState.Added;
+                db.SaveChanges();
+            
+            }
+            
+        }
+
+        public static void updateTodoItem(TodoItem oTodoItem)
+        {
+            using (var db = new OrganizerDBContext())
+            {
+
+                db.TodoItems.Attach(oTodoItem);
+                db.Entry(oTodoItem).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+
+        }
     }
 }

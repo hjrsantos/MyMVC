@@ -14,9 +14,9 @@ namespace MVC4.MyOrganizer.Models
         public bool Completed { get; set; }
         public string Title { get; set; }
         
-        public static List<TodoItem> ThingsTodo = new List<TodoItem> { 
-            new TodoItem{ Title = "Create MVC Sample app" , Completed = false},
-            new TodoItem{ Title = "Publish MVC Sample app" , Completed = false}
-        };
+        //public static List<TodoItem> ThingsTodo = new List<TodoItem> { 
+        //    new TodoItem{ Title = "Create MVC Sample app" , Completed = false},
+        //    new TodoItem{ Title = "Publish MVC Sample app" , Completed = false}
+        //};
     }
 }

@@ -68,3 +68,38 @@ G:\Project\GitHub\MyMVC\MVC4\MyOrganizer.Tests\bin\Debug\EntityFramework.xml
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer.Tests\obj\Debug\ResolveAssemblyReference.cache
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer.Tests\obj\Debug\MVC4.MyOrganizer.Tests.dll
 G:\Project\GitHub\MyMVC\MVC4\MyOrganizer.Tests\obj\Debug\MVC4.MyOrganizer.Tests.pdb
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\MVC4.MyOrganizer.Tests.dll.config
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\MVC4.MyOrganizer.Tests.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\MVC4.MyOrganizer.Tests.pdb
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\MVC4.MyOrganizer.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\Newtonsoft.Json.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Net.Http.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Net.Http.Formatting.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Net.Http.WebRequest.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Helpers.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Http.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Http.WebHost.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Mvc.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Razor.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.WebPages.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\EntityFramework.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\MVC4.MyOrganizer.pdb
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\Newtonsoft.Json.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Net.Http.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Net.Http.Formatting.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Net.Http.WebRequest.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Helpers.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Http.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Http.WebHost.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Mvc.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.Razor.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.WebPages.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\bin\Debug\EntityFramework.xml
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\obj\Debug\ResolveAssemblyReference.cache
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\obj\Debug\MVC4.MyOrganizer.Tests.dll
+G:\Project\MVC\MVC and knockout\MVC4\MyOrganizer.Tests\obj\Debug\MVC4.MyOrganizer.Tests.pdb

@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container">
+        <div class="text-center">
+            <h1>KnockJS, AJAX and WebAPI Demo</h1>
+        </div>
+        <div class="alert">
+            <strong><i class='icon-info-sign' style='color:#1570A6'></i> Info!</strong> 
+                <ul>
+                    <li>Save todo Item and it will automatically update the table</li>
+                    <li>Edit todo Item by clicking the table row</li>
+                </ul>
+        </div>
+        <div class="row-fluid">
+            <div class="span4">                
+              <fieldset>
+                <legend>Add Todo Item</legend>
+                <label>Select Category</label>
+                <select data-bind="options: categories, optionsText: 'name', optionsValue: 'id', value:$root.CategoryId"></select>
+                <label>Title</label>
+                <textarea rows="3" data-bind = "value: Title"></textarea>
+                <p>You have typed: <span data-bind="text: Title"></span></p>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <button id="saveButton" type="button" class="btn" data-bind="click :$root.saveTodoItem">Save</button>
+                    </div>
+                    <div class="span3">
+                    </div>
+                    <div class="span3">
+                        <button id="updateButton" type="button" class="btn" data-bind="click :$root.updateTodoItem">Update</button>
+                    </div>
+                    <div class="span3">
+                        <button id="cancelUpdateButton" type="button" class="btn">Cancel</button>
+                    </div>
+                </div>
+              </fieldset>
+                
+            </div>
+            <div class="span8">
+                <fieldset>
+                <legend>List of all TodoItems</legend>              
+                    <table class="table table-hover" data-bind="visible:  TodoItems().length>0" style="border: double">
+                        <thead>
+                            <tr>
+                                <td>Id</td>
+                                <td>CategoryId</td>
+                                <td>Completed</td>
+                                <td>Title</td>
+                            </tr>
+                        </thead>
+                        <!--Iterate through an observableArray using foreach-->
+                        <tbody data-bind="foreach:  TodoItems">
+                            <tr data-bind="click: $root.updateSelectedTodoItem">
+                                <td><span data-bind="text:  Id"></span></td>
+                                <td><span data-bind="text:  CategoryId"></span></td>
+                                <td><span data-bind="text: Completed"></span></td>
+                                <td><span data-bind="text: Title"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            disbleUpdateButtons();
+        });
+
+        var TodoViewModel = function () {
+            var self = this;
+            //ObservableArray for Storing the JSON Response
+            self.TodoItems = ko.observableArray([]);
+            self.Id = ko.observable(0);
+            self.CategoryId = ko.observable(0);
+            self.Completed = ko.observable(false);
+            self.Title = ko.observable("");
+
+            self.categories = ko.observableArray([
+                { "id": 1, "name": "Home" },
+                { "id": 2, "name": "Work" }
+            ]);
+
+            var TodoItem = {
+                Id: self.Id,
+                CategoryId: self.CategoryId,
+                Completed: self.Completed,
+                Title: self.Title
+            };
+            displayAllTodoItems();
+
+
+            //Function to Display record to be updated
+            self.updateSelectedTodoItem = function (todoItem) {
+                self.Id(todoItem.Id),
+                self.CategoryId(todoItem.CategoryId),
+                self.Completed(todoItem.Completed),
+                self.Title(todoItem.Title)
+                enableUpdateButtons();
+            };
+
+
+            self.saveTodoItem = function () {
+
+                if (isNUllOrEmpty(TodoItem.Title())) {
+                    alert('Title is required');
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/TodoApi",
+                    contentType: "application/json; charset=utf-8",
+                    data: ko.toJSON(TodoItem),
+                    success: function (data) {
+                        alert(TodoItem.Title() + " successfully saved");
+                        displayAllTodoItems();
+
+                    },
+                    error: function (error) {
+                        alert("Error Status: " + error.status + "; Text: " + error.statusText);
+                    }
+                });
+            }
+
+
+            self.updateTodoItem = function () {
+
+                if (isNUllOrEmpty(TodoItem.Title())) {
+                    alert('Title is required');
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/TodoApi/" + TodoItem.Id(),
+                    contentType: "application/json; charset=utf-8",
+                    data: ko.toJSON(TodoItem),
+                    success: function (data) {
+                        alert(TodoItem.Title() + " successfully saved");
+                        displayAllTodoItems();
+                    },
+                    error: function (error) {
+                        alert("Error Status: " + error.status + "; Text: " + error.statusText);
+                    }
+                });
+                disbleUpdateButtons();
+            }
+
+            //AJAX call to retrieve all todoItems from DB
+            function displayAllTodoItems() {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/api/TodoApi",
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "json",
+                    success: function (data) {
+                        self.TodoItems(data);
+                        clearViewModel();
+                    },
+                    error: function (error) {
+                        alert("Error Status: " + error.status + "; Text: " + error.statusText);
+                    }
+
+                });
+            }
+
+            clearViewModel = function () {
+                self.Id(0);
+                self.CategoryId(0);
+                self.Completed(false);
+                self.Title("");
+            }
+        }
+
+        //var todoViewModel = new TodoViewModel();
+        //ko.applyBindings(todoViewModel);
+        ko.applyBindings(new TodoViewModel());
+
+        enableUpdateButtons = function () {
+
+            $('#saveButton').attr("disabled", true);
+            $('#updateButton').attr("disabled", false);
+            $('#cancelUpdateButton').attr("disabled", false);
+        }
+        disbleUpdateButtons = function () {
+            $('#saveButton').attr("disabled", false);
+            $('#updateButton').attr("disabled", true);
+            $('#cancelUpdateButton').attr("disabled", true);
+        }
+</script>
